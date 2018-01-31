@@ -1,0 +1,11 @@
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\bin\Debug\netcoreapp2.0\UrlShortenerNet.deps.json
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\bin\Debug\netcoreapp2.0\UrlShortenerNet.runtimeconfig.json
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\bin\Debug\netcoreapp2.0\UrlShortenerNet.runtimeconfig.dev.json
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\bin\Debug\netcoreapp2.0\UrlShortenerNet.dll
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\obj\Debug\netcoreapp2.0\UrlShortenerNet.csproj.CoreCompileInputs.cache
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\obj\Debug\netcoreapp2.0\UrlShortenerNet.AssemblyInfoInputs.cache
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\obj\Debug\netcoreapp2.0\UrlShortenerNet.AssemblyInfo.cs
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\bin\Debug\netcoreapp2.0\UrlShortenerNet.pdb
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\obj\Debug\netcoreapp2.0\UrlShortenerNet.dll
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\obj\Debug\netcoreapp2.0\UrlShortenerNet.pdb
+C:\Users\lemon\source\repos\UrlShortenerNet\UrlShortenerNet\obj\Debug\netcoreapp2.0\UrlShortenerNet.csprojResolveAssemblyReference.cache
