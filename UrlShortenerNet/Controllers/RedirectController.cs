@@ -19,12 +19,12 @@ namespace UrlShortenerNet.Controllers
         }
 
         [HttpPost]
-        public Redirect Redirect(Redirect redirect)
+        public IActionResult Redirect(Redirect redirect)
         {
             redirect.CreateDate = DateTime.UtcNow;
             if (string.IsNullOrWhiteSpace(redirect.EndPoint))
             {
-                throw new ArgumentException("Value EndPoint must be populated with a valid URL");
+                return new StatusCodeResult(StatusCodes.Status400BadRequest);
             }
             if (string.IsNullOrWhiteSpace(redirect.EntryPoint))
             {
@@ -32,20 +32,43 @@ namespace UrlShortenerNet.Controllers
             }
             else if (_context.Redirects.Any(y => String.Equals(y.EntryPoint, redirect.EntryPoint, StringComparison.CurrentCultureIgnoreCase)))
             {
-                throw new Exception("Entry Point already claimed");
+                return new StatusCodeResult(StatusCodes.Status400BadRequest);
             }
             _context.Redirects.Add(redirect);
             _context.SaveChangesAsync();
-            return redirect;
+            return Json(redirect);
         }
 
-        
+        [HttpPost]
+        public IActionResult BadEntryRedirect(string endpoint)
+        {
+            if (string.IsNullOrWhiteSpace(endpoint))
+            {
+                return new StatusCodeResult(StatusCodes.Status400BadRequest);
+            }
+            var badEntryRedirect = new BadEntryPointRedirect();
+            badEntryRedirect.CreateDate = DateTime.UtcNow;
+            badEntryRedirect.EndPoint = endpoint;
+            _context.BadEntryPoints.Add(badEntryRedirect);
+            _context.SaveChangesAsync();
+            return Json(badEntryRedirect);
+        }
+
+
         [HttpGet]
         public IActionResult Redirect(string entryPoint)
         {
             var redirect = _context.Redirects.FirstOrDefault(x => x.EntryPoint.Equals(entryPoint, StringComparison.CurrentCultureIgnoreCase));
-            if(redirect != null)
+            if (redirect != null)
             {
+                return View(redirect);
+            }
+            if (_context.BadEntryPoints.Any())
+            {
+                redirect = new Redirect
+                {
+                    EndPoint = _context.BadEntryPoints.OrderByDescending(x => x.CreateDate).FirstOrDefault().EndPoint
+                };
                 return View(redirect);
             }
             else
@@ -53,6 +76,5 @@ namespace UrlShortenerNet.Controllers
                 throw new Exception("Webpage not found");
             }
         }
-
     }
 }
